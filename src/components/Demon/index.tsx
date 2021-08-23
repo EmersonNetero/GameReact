@@ -4,15 +4,15 @@ import { TILE_SIZE, DEMON_TILE_SIZE, Edirection } from '../../settings/constants
 import useEnemyMoviment from '../../hooks/useEnemyMoviment';
 
 
-function Demon() {
+function Demon({initialPosition}) {
 
-    const {enemy, direction } = useEnemyMoviment({x: 12, y: 5});
+    const {enemy, direction } = useEnemyMoviment(initialPosition);
     return (
         <div 
             style={{
                 width: DEMON_TILE_SIZE,
                 height: DEMON_TILE_SIZE, 
-                bottom: TILE_SIZE * enemy.y,
+                top: TILE_SIZE * enemy.y,
                 left: TILE_SIZE * enemy.x,
                 backgroundImage:"url(./assets/DEMON.png)",
                 backgroundRepeat: 'no-repeat',

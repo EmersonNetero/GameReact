@@ -4,15 +4,15 @@ import { Edirection, HEAD_OFFSET, TILE_SIZE } from '../../settings/constants';
 import useEnemyMoviment from '../../hooks/useEnemyMoviment';
 
 
-function MiniDemon() {
+function MiniDemon({initialPosition}) {
 
-    const {enemy, direction} = useEnemyMoviment({x:7, y: 11});
+    const {enemy, direction} = useEnemyMoviment(initialPosition);
     return (
         <div 
             style={{
                 width: TILE_SIZE,
                 height: TILE_SIZE + HEAD_OFFSET, 
-                bottom: TILE_SIZE* enemy.y,
+                top: TILE_SIZE* enemy.y - HEAD_OFFSET,
                 left: TILE_SIZE* enemy.x,
                 backgroundImage:"url(./assets/MINI-DEMON.png)",
                 backgroundRepeat: 'no-repeat',

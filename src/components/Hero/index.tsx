@@ -4,15 +4,22 @@ import { Edirection, HEAD_OFFSET, TILE_SIZE } from '../../settings/constants';
 import useHeroMoviment from '../../hooks/useHeroMoviment';
 
 
-function Hero() {
+interface IProps {
+    initialPosition: {
+        x: number,
+        y: number    
+    }
+}
 
-    const {hero, direction} = useHeroMoviment();
+function Hero(props: IProps) {
+
+    const {hero, direction} = useHeroMoviment(props.initialPosition);
     return (
         <div 
             style={{
                 width: TILE_SIZE,
                 height: TILE_SIZE + HEAD_OFFSET, 
-                bottom: TILE_SIZE * hero.y,
+                top: TILE_SIZE * hero.y - HEAD_OFFSET,
                 left: TILE_SIZE * hero.x,
                 backgroundImage:"url(./assets/HERO.png)",
                 backgroundRepeat: 'no-repeat',
