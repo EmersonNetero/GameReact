@@ -1,8 +1,7 @@
 import React from 'react';
-import Board from './components/Board';
 import { GAME_SIZE } from './settings/constants';
 import './App.css';
-import Debugger from './components/Debugger';
+import Game from './components/Game';
 
 function App() {
 	return (
@@ -15,8 +14,7 @@ function App() {
 					
 				}}
 				>
-				<Debugger />
-				<Board />
+				<Game />
 			</div>
 		</div>
 	);
