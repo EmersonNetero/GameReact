@@ -48,7 +48,7 @@ export const canvas = [
     [WL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, TR, FL, FL, FL, FL, FL, WL],
     [WL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, WL],
     [WL, FL, FL, FL, TR, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, WL],
-    [WL, FL, FL, FL, FL, FL, FL, FL, FL, DE, FL, FL, FL, FL, FL, FL, FL, FL, FL, WL],
+    [WL, FL, FL, FL, FL, FL, CH, FL, FL, DE, FL, FL, FL, FL, FL, FL, FL, FL, FL, WL],
     [WL, FL, FL, FL, MD, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, WL],
     [WL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, WL],
     [WL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, WL],
@@ -87,7 +87,7 @@ function getEnemyValidMoves(canvasValue) {
 
     return {
         valid: canvasValue === ECanvas.FLOOR || canvasValue === ECanvas.HERO,
-        dead: false,
+        dead: canvasValue === ECanvas.HERO,
         chest: false,
         door: false,
     }

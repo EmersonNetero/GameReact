@@ -6,6 +6,7 @@ import Chest from '../Chest';
 import Trap from '../Trap';
 import { GAME_SIZE } from '../../settings/constants';
 import {canvas, ECanvas} from '../../contexts/canvas/helpers'
+import { ChestContext } from '../../contexts/Chest';
 
 
 function getCanvasMap() {
@@ -47,10 +48,26 @@ function getCanvasMap() {
 
 const elements = getCanvasMap();
 function Board() {
+    const chestsContext = React.useContext(ChestContext)
+
+    const renderOpenedDoor = () => {
+        return (
+            <img src="./assets/DOOR-OPEN.png" alt="porta" style={{
+                position: "absolute",
+                left: 580,
+                top: 0
+            }} />
+        )
+    }
     return (
         <div>
-            <img src="./assets/tileset.gif" alt="" width={GAME_SIZE} height={GAME_SIZE}/>
             {elements}
+
+            {chestsContext.totalChest === chestsContext.openedChests.total && (
+                renderOpenedDoor()
+            )}
+        
+            <img src="./assets/tileset.gif" alt="" width={GAME_SIZE} height={GAME_SIZE}/>
         </div>
     )
 }

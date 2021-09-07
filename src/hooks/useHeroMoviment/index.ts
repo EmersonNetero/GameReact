@@ -26,10 +26,16 @@ function useHeroMoviment(initialPosition) {
             
             if (moviment.nextMove.dead) {
                 alert('Você morreu!')
+                window.location.reload()
             }
 
             if (moviment.nextMove.chest) {
-                chestContext.updateOpenedChests();
+                chestContext.updateOpenedChests(moviment.nextPosition);
+            }
+
+            if (chestContext.totalChest === chestContext.openedChests.total && moviment.nextMove.door) {
+                alert('Você venceu')
+                window.location.reload()
             }
         }
     })

@@ -1,9 +1,18 @@
 import React from 'react';
 import './style.css'
 import { TILE_SIZE } from '../../settings/constants';
+import { ChestContext } from '../../contexts/Chest';
 
 
 function Chest({initialPosition}) {
+    const chestContext = React.useContext(ChestContext)
+
+    const shouldAnimate = chestContext.openedChests.positions.find((position) => {
+        const match = initialPosition.y === position.y && initialPosition.x === position.x 
+
+        return match
+    })
+
     return (
         <div 
             style={{
@@ -13,7 +22,7 @@ function Chest({initialPosition}) {
                 left: TILE_SIZE * initialPosition.x,
                 backgroundImage:"url(./assets/CHEST.png)",
                 backgroundRepeat: 'no-repeat',
-                animation: 'chest-animation 1s steps(3) infinite',
+                animation: shouldAnimate && 'chest-animation 1s steps(2) forwards',
                 position: 'absolute',
                 }} >
         </div>
